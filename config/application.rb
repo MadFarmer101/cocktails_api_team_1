@@ -13,7 +13,7 @@ require "action_cable/engine"
 
 Bundler.require(*Rails.groups)
 
-module CocoktailApi
+module CocktailApi
   class Application < Rails::Application
     config.load_defaults 6.0
 
