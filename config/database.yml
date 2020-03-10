@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: cocoktail_api_development
+  database: cocktail_api_development
   
 test:
   <<: *default
-  database: cocoktail_api_test
+  database: cocktail_api_test
 
 production:
   <<: *default
-  database: cocoktail_api_production
-  username: cocoktail_api
-  password: <%= ENV['COCOKTAIL_API_DATABASE_PASSWORD'] %>
+  database: cocktail_api_production
+  username: cocktail_api
+  password: <%= ENV['COCKTAIL_API_DATABASE_PASSWORD'] %>

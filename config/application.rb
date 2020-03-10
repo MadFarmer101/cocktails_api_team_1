@@ -16,9 +16,7 @@ Bundler.require(*Rails.groups)
 module CocktailApi
   class Application < Rails::Application
     config.load_defaults 6.0
-
     config.api_only = true
-
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
@@ -29,6 +27,14 @@ module CocktailApi
           max_age: 0
       end
     end
+    config.generators do |generate|
+      generate.helper false
+      generate.assets false
+      generate.view_specs false
+      generate.helper_specs false
+      generate.routing_specs false
+      generate.controller_specs false
+      config.generators.system_tests = nil
+    end
   end
 end
-
