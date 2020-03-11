@@ -1,6 +1,6 @@
 class Api::V1::CocktailsController < ApplicationController
     before_action :check_query_param
-    
+
     def index
         response = RestClient.get(
             "https://www.thecocktaildb.com/api/json/v1/1/search.php",
@@ -11,10 +11,9 @@ class Api::V1::CocktailsController < ApplicationController
             }   
         )
         results = JSON.parse(response)
-        
+        binding.pry
         if results['drinks'].nil?
             render json: {error: 'No drinks were found'}, status: 400
-            
         else
             render json: {drinks: results['drinks'] }
         end

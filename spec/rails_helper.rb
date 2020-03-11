@@ -28,10 +28,21 @@ RSpec.configure do |config|
       headers: {
       'Accept'=>'*/*',
       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-      'Host'=>'www.thecocktaildb.com',
-      'User-Agent'=>'rest-client/2.1.0 (linux-gnu x86_64) ruby/2.5.1p57'
+      'Host'=>'www.thecocktaildb.com'
+
       }).
     to_return(status: 200, body: file_fixture('cocktails_api_margarita_response.json').read, headers: {})
+
+
+    stub_request(:get, "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=hgjhvhj").
+    with(
+      headers: {
+      'Accept'=>'*/*',
+      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+      'Host'=>'www.thecocktaildb.com'
+      }).
+    to_return(status: 200, body: "{\"drinks\":nil}", headers: {})
+
 
   end
 end
