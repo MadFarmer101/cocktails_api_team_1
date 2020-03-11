@@ -1,4 +1,4 @@
-descrive 'GET /cocktails', type: request do
+describe 'GET /cocktails', type: :request do
     describe'successfull' do
         before do
             get '/api/v1/cocktails',
