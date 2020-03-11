@@ -1,5 +1,7 @@
 require 'coveralls'
 Coveralls.wear_merged!('rails')
+require 'webmock/rspec'
+WebMock.enable!
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -19,4 +21,17 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods
   config.include Shoulda::Matchers::ActiveRecord, type: :model
+  config.before do
+  
+    stub_request(:get, "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Margarita").
+    with(
+      headers: {
+      'Accept'=>'*/*',
+      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+      'Host'=>'www.thecocktaildb.com',
+      'User-Agent'=>'rest-client/2.1.0 (linux-gnu x86_64) ruby/2.5.1p57'
+      }).
+    to_return(status: 200, body: file_fixture('cocktails_api_margarita_response.json').read, headers: {})
+
+  end
 end
