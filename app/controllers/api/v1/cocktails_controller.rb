@@ -9,8 +9,9 @@ class Api::V1::CocktailsController < ApplicationController
             }   
         )
 
-        if response.body == ""
+        if response.body == []
             render json: {error: 'No drinks were found'}, status: 400
+            
         else
             results = JSON.parse(response)
             render json: {drinks: results['drinks'] }
