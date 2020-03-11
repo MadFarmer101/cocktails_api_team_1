@@ -20,6 +20,23 @@ describe 'GET /cocktails', type: :request do
         before do
             get '/api/v1/cocktails',
             params: {
+                q: 'hgjhvhj'
+            }
+        end
+        
+        it 'returns 400 status' do
+            expect(response.status).to eq 400
+        end
+
+        it 'returns error message' do
+            expect(JSON.parse(response.body)['error']).to eq 'No drinks were found'
+        end
+    end 
+
+    describe 'no query params' do
+        before do
+            get '/api/v1/cocktails',
+            params: {
                 q: ''
             }
         end
@@ -29,7 +46,7 @@ describe 'GET /cocktails', type: :request do
         end
 
         it 'returns error message' do
-            expect(JSON.parse(response.body)['error']).to eq 'No drink were found'
+            expect(JSON.parse(response.body)['error']).to eq 'No input in search field'
         end
     end 
 end
