@@ -3,7 +3,7 @@ describe 'GET /cocktails', type: :request do
         before do
             get '/api/v1/cocktails',
             params: {
-                q: 'margarita'
+                q: 'Margarita'
             }
         end
 
