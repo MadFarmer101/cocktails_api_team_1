@@ -1,7 +1,6 @@
 require 'coveralls'
 Coveralls.wear_merged!('rails')
-require 'webmock/rspec'
-WebMock.enable!
+
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -9,6 +8,9 @@ require File.expand_path('../../config/environment', __FILE__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'webmock/rspec'
+WebMock.enable!
+#WebMock.allow_net_connect!
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -41,7 +43,7 @@ RSpec.configure do |config|
       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
       'Host'=>'www.thecocktaildb.com'
       }).
-    to_return(status: 200, body: "{\"drinks\":nil}", headers: {})
+    to_return(status: 200, body: nil, headers: {})
 
 
   end

@@ -10,11 +10,13 @@ class Api::V1::CocktailsController < ApplicationController
                 }
             }   
         )
-        results = JSON.parse(response)
-        binding.pry
-        if results['drinks'].nil?
+        
+
+        if response.body.empty?
+            
             render json: {error: 'No drinks were found'}, status: 400
         else
+            results = JSON.parse(response)
             render json: {drinks: results['drinks'] }
         end
     end
