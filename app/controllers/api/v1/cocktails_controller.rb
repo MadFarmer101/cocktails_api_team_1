@@ -16,8 +16,20 @@ class Api::V1::CocktailsController < ApplicationController
             
             render json: {error: 'No drinks were found'}, status: 400
         else
-            results = JSON.parse(response)
-            render json: {drinks: results['drinks'] }
+          
+            drinks = JSON.parse(response)
+            binding.pry
+            sanitized_drinks = []
+
+            drinks.each do |drink|
+                sanitized_drinks.push(
+                    {
+                        name: drink.
+                    }
+
+                )
+            end
+            render json: {drinks: sanitazed_drinks }
         end
     end
 
