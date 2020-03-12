@@ -18,18 +18,13 @@ class Api::V1::CocktailsController < ApplicationController
         else
           
             drinks = JSON.parse(response)
-            binding.pry
-            sanitized_drinks = []
-
-            drinks.each do |drink|
-                sanitized_drinks.push(
-                    {
-                        name: drink.
-                    }
-
-                )
-            end
-            render json: {drinks: sanitazed_drinks }
+            sanitized_drinks = 
+                {
+                    "name": drinks["drinks"][0]["strDrink"],
+                    "id": drinks["drinks"][0]["idDrink"]
+                }
+            
+            render json: {drinks: sanitized_drinks }
         end
     end
 
