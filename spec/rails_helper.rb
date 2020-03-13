@@ -1,7 +1,6 @@
 require 'coveralls'
 Coveralls.wear_merged!('rails')
 
-
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
@@ -26,25 +25,21 @@ RSpec.configure do |config|
   config.before do
   
     stub_request(:get, "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Margarita").
-    with(
-      headers: {
-      'Accept'=>'*/*',
-      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-      'Host'=>'www.thecocktaildb.com'
-
-      }).
-    to_return(status: 200, body: file_fixture('cocktails_api_margarita_response.json').read, headers: {})
-
+      with(
+        headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Host'=>'www.thecocktaildb.com'
+        }).
+        to_return(status: 200, body: file_fixture('cocktails_api_margarita_response.json').read, headers: {})
 
     stub_request(:get, "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=hgjhvhj").
-    with(
-      headers: {
-      'Accept'=>'*/*',
-      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-      'Host'=>'www.thecocktaildb.com'
-      }).
-    to_return(status: 200, body: nil, headers: {})
-
-
+      with(
+        headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Host'=>'www.thecocktaildb.com'
+        }).
+      to_return(status: 200, body: nil, headers: {})
   end
 end

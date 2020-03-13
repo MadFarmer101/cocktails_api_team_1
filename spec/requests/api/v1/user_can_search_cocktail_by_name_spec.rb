@@ -8,7 +8,7 @@ describe 'GET /cocktails', type: :request do
     end
 
     it 'returns 200 status' do
-        expect(response.status).to eq 200
+      expect(response.status).to eq 200
     end
 
     it 'returns drink id' do
@@ -16,15 +16,15 @@ describe 'GET /cocktails', type: :request do
     end
 
     it 'returns drink name' do
-        expect(JSON.parse(response.body)["drinks"].first["name"]).to eq "Margarita"
+      expect(JSON.parse(response.body)["drinks"].first["name"]).to eq "Margarita"
     end
 
     it 'returns drink Category' do
-        expect(JSON.parse(response.body)["drinks"].first["category"]).to eq "Ordinary Drink"
-      end
+      expect(JSON.parse(response.body)["drinks"].first["category"]).to eq "Ordinary Drink"
+    end
 
     it 'returns drink IBA' do
-        expect(JSON.parse(response.body)["drinks"].first["IBA"]).to eq "Contemporary Classics"
+      expect(JSON.parse(response.body)["drinks"].first["IBA"]).to eq "Contemporary Classics"
     end
 
     it 'returns number of drinks' do
@@ -42,11 +42,11 @@ describe 'GET /cocktails', type: :request do
     end
     
     it 'returns 400 status' do
-        expect(response.status).to eq 400
+      expect(response.status).to eq 400
     end
 
     it 'returns error message' do
-        expect(JSON.parse(response.body)['error']).to eq 'No drinks were found'
+      expect(JSON.parse(response.body)['error']).to eq 'No drinks were found'
     end
   end 
 
@@ -59,11 +59,11 @@ describe 'GET /cocktails', type: :request do
     end
         
     it 'returns 400 status' do
-        expect(response.status).to eq 400
+      expect(response.status).to eq 400
     end
 
     it 'returns error message' do
-        expect(JSON.parse(response.body)['error']).to eq 'No input in search field'
+      expect(JSON.parse(response.body)['error']).to eq 'No input in search field'
     end
   end 
 end
