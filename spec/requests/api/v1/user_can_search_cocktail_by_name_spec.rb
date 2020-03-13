@@ -12,7 +12,8 @@ describe 'GET /cocktails', type: :request do
         end
 
         it 'returns drink' do
-            expect(JSON.parse(response.body)["drinks"]["name"]).to eq "Margarita"
+            binding.pry
+            expect(JSON.parse(response.body)["drinks"].first["name"]).to eq "Margarita"
         end
     end
 
