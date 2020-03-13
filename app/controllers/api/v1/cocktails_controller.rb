@@ -18,11 +18,13 @@ class Api::V1::CocktailsController < ApplicationController
         else
           
             drinks = JSON.parse(response)
-            sanitized_drinks = 
-                {
-                    "name": drinks["drinks"][0]["strDrink"],
-                    "id": drinks["drinks"][0]["idDrink"]
+           
+            sanitized_drinks = drinks["drinks"].map { |drink| 
+                { 
+                    "id": drink["idDrink"], 
+                    "name": drink["strDrink"]
                 }
+            }
             
             render json: {drinks: sanitized_drinks }
         end
