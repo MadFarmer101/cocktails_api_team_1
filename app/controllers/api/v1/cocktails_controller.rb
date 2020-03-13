@@ -26,6 +26,20 @@ class Api::V1::CocktailsController < ApplicationController
       end
   end
 
+  def show
+    response = RestClient.get(
+      "https://www.thecocktaildb.com/api/json/v1/1/lookup.php",
+      {
+        params: {
+          i: params[:id]
+        }
+      }
+    )
+    results = JSON.parse(response)
+    render json: { drink: results['drinks']}
+  
+  end
+
   private
   def check_query_param
     if params[:q] == ""

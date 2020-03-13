@@ -9,7 +9,8 @@ describe 'GET /cocktails/:id', type: :request do
     end
 
     it 'returns correct cocktail name' do
-      expect(JSON.parse(response.body)['drinks']['strDrink']).to eq 'Whitecap Margarita'    
+      binding.pry
+      expect(JSON.parse(response.body)['drink'].first['strDrink']).to eq 'Whitecap Margarita'    
     end
 
     #it 'returns 200 status' do
