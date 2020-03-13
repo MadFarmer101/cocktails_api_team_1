@@ -16,7 +16,9 @@ class Api::V1::CocktailsController < ApplicationController
           sanitized_drinks = drinks["drinks"].map { |drink|
               {
                   "id": drink["idDrink"],
-                  "name": drink["strDrink"]
+                  "name": drink["strDrink"],
+                  "category": drink["strCategory"],
+                  "IBA": drink["strIBA"]
               }
           }
           render json: {drinks: sanitized_drinks }

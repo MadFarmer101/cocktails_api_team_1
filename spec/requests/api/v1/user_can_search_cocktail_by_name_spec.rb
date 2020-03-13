@@ -20,11 +20,11 @@ describe 'GET /cocktails', type: :request do
         end
 
         it 'returns drink Category' do
-            expect(JSON.parse(response.body)["drinks"].first["category"]).to eq "modern"
+            expect(JSON.parse(response.body)["drinks"].first["category"]).to eq "Ordinary Drink"
           end
 
         it 'returns drink IBA' do
-            expect(JSON.parse(response.body)["drinks"].first["IBA"]).to eq "dldl"
+            expect(JSON.parse(response.body)["drinks"].first["IBA"]).to eq "Contemporary Classics"
         end
 
         it 'returns number of drinks' do
