@@ -14,19 +14,18 @@ class Api::V1::CocktailsController < ApplicationController
 
       if response.body.empty?
           
-          render json: {error: 'No drinks were found'}, status: 400
-      else
-          
-          drinks = JSON.parse(response)
-          sanitized_drinks = 
-              {
-                  "name": drinks["drinks"][0]["strDrink"],
-                  "id": drinks["drinks"][0]["idDrink"]
-              }
-          
-          render json: {drinks: sanitized_drinks }
-      end
-  end
+            drinks = JSON.parse(response)
+           
+            sanitized_drinks = drinks["drinks"].map { |drink| 
+                { 
+                    "id": drink["idDrink"], 
+                    "name": drink["strDrink"]
+                }
+            }
+            
+            render json: {drinks: sanitized_drinks }
+        end
+    end
 
   private
 
