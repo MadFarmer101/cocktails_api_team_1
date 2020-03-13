@@ -19,9 +19,18 @@ describe 'GET /cocktails', type: :request do
             expect(JSON.parse(response.body)["drinks"].first["name"]).to eq "Margarita"
         end
 
+        it 'returns drink Category' do
+            expect(JSON.parse(response.body)["drinks"].first["category"]).to eq "modern"
+          end
+
+        it 'returns drink IBA' do
+            expect(JSON.parse(response.body)["drinks"].first["IBA"]).to eq "dldl"
+        end
+
         it 'returns number of drinks' do
           expect(JSON.parse(response.body)["drinks"].count).to eq 5
         end
+
     end
 
     describe 'no cocktails found' do
