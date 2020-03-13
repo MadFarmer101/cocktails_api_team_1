@@ -35,8 +35,28 @@ class Api::V1::CocktailsController < ApplicationController
         }
       }
     )
-    results = JSON.parse(response)
-    render json: { drink: results['drinks']}
+    drinks = JSON.parse(response)
+    sanitized_drinks = drinks["drinks"].map { |drink|
+      {
+        "id": drink["idDrink"],
+        "name": drink["strDrink"],
+        "category": drink["strCategory"],
+        "IBA": drink["strIBA"],
+        "glass": drink["strGlass"],
+        "instructions": drink["strInstructions"],
+        "image": drink["strDrinkThumb"],
+        "IBA": drink["strIBA"],
+        "ingredient_1": drink["strIngredient1"],
+        "ingredient_2": drink["strIngredient2"],
+        "ingredient_3": drink["strIngredient3"],
+        "ingredient_4": drink["strIngredient4"],
+        "ingredient_5": drink["strIngredient5"],
+
+      }
+    }
+    render json: {drinks: sanitized_drinks }
+
+
   
   end
 
