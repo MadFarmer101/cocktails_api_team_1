@@ -11,8 +11,16 @@ describe 'GET /cocktails', type: :request do
             expect(response.status).to eq 200
         end
 
-        it 'returns drink' do
+        it 'returns drink id' do
+          expect(JSON.parse(response.body)["drinks"].first["id"]).to eq "11007"
+        end
+
+        it 'returns drink name' do
             expect(JSON.parse(response.body)["drinks"].first["name"]).to eq "Margarita"
+        end
+
+        it 'returns number of drinks' do
+          expect(JSON.parse(response.body)["drinks"].count).to eq 5
         end
     end
 
