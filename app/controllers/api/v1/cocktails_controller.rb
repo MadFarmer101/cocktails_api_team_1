@@ -95,7 +95,6 @@ class Api::V1::CocktailsController < ApplicationController
 
       }
     }
-    binding.pry
     render json: {drinks: sanitized_drinks }
 
 

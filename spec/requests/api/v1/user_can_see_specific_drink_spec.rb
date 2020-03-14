@@ -36,23 +36,43 @@ describe 'GET /cocktails/:id', type: :request do
   end
 
   it 'returns drink Ingredient 1' do
-    expect(JSON.parse(response.body)["drinks"].first["ingredient_1"]).to eq "Ice"
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].first["name"]).to eq "Ice"
   end
 
   it 'returns drink Ingredient 2' do
-    expect(JSON.parse(response.body)["drinks"].first["ingredient_2"]).to eq "Tequila"
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].second["name"]).to eq "Tequila"
   end
 
   it 'returns drink Ingredient 3' do
-    expect(JSON.parse(response.body)["drinks"].first["ingredient_3"]).to eq "Cream of coconut"
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].third["name"]).to eq "Cream of coconut"
   end
 
   it 'returns drink Ingredient 4' do
-    expect(JSON.parse(response.body)["drinks"].first["ingredient_4"]).to eq "Lime juice"
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].fourth["name"]).to eq "Lime juice"
   end
 
   it 'returns drink Ingredient 5' do
-    expect(JSON.parse(response.body)["drinks"].first["ingredient_5"]).to eq nil
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].fifth["name"]).to eq nil
+  end
+
+  it 'returns drink measurement 1' do
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].first["measure"]).to eq "1 cup "
+  end
+
+  it 'returns drink measurement 2' do
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].second["measure"]).to eq "2 oz "
+  end
+
+  it 'returns drink measurement 3' do
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].third["measure"]).to eq "1/4 cup "
+  end
+
+  it 'returns drink measurement 4' do
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].fourth["measure"]).to eq "3 tblsp fresh "
+  end
+
+  it 'returns drink measurement 5' do
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].fifth["measure"]).to eq nil
   end
 
   it 'returns number of drinks' do
