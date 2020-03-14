@@ -112,7 +112,7 @@ class Api::V1::CocktailsController < ApplicationController
 		}
     render json: {drinks: sanitized_drinks } 
   end
-  #changes
+
   private
   def check_query_param
     if params[:q] == ""
