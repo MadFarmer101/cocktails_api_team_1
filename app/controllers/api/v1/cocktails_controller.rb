@@ -45,15 +45,57 @@ class Api::V1::CocktailsController < ApplicationController
         "glass": drink["strGlass"],
         "instructions": drink["strInstructions"],
         "image": drink["strDrinkThumb"],
-        "IBA": drink["strIBA"],
-        "ingredient_1": drink["strIngredient1"],
-        "ingredient_2": drink["strIngredient2"],
-        "ingredient_3": drink["strIngredient3"],
-        "ingredient_4": drink["strIngredient4"],
-        "ingredient_5": drink["strIngredient5"],
+        ingredients: [
+          { name: drink["strIngredient1"],
+           measure: drink["strMeasure1"],
+         },
+         { name: drink["strIngredient2"],
+          measure: drink["strMeasure2"]
+        },
+        { name: drink["strIngredient3"],
+          measure: drink["strMeasure3"]
+        },
+        { name: drink["strIngredient4"],
+          measure: drink["strMeasure4"]
+        },
+        { name: drink["strIngredient5"],
+          measure: drink["strMeasure5"]
+        },
+        { name: drink["strIngredient6"],
+          measure: drink["strMeasure6"]
+        },
+        { name: drink["strIngredient7"],
+          measure: drink["strMeasure7"]
+        },
+        { name: drink["strIngredient8"],
+          measure: drink["strMeasure8"]
+        },
+        { name: drink["strIngredient9"],
+          measure: drink["strMeasure9"]
+        },
+        { name: drink["strIngredient10"],
+          measure: drink["strMeasure10"]
+        },
+        { name: drink["strIngredient11"],
+          measure: drink["strMeasure11"]
+        },
+        { name: drink["strIngredient12"],
+          measure: drink["strMeasure12"]
+        },
+        { name: drink["strIngredient13"],
+          measure: drink["strMeasure13"]
+        },
+        { name: drink["strIngredient14"],
+          measure: drink["strMeasure14"]
+        },
+        { name: drink["strIngredient15"],
+          measure: drink["strMeasure15"]
+        }
+        ]
 
       }
     }
+    binding.pry
     render json: {drinks: sanitized_drinks }
 
 
