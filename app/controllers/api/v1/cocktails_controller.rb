@@ -25,7 +25,7 @@ class Api::V1::CocktailsController < ApplicationController
         render json: {drinks: sanitized_drinks }
       end
   end
-
+#TEST looking into formatting issue
   def show
     response = RestClient.get(
       "https://www.thecocktaildb.com/api/json/v1/1/lookup.php",
