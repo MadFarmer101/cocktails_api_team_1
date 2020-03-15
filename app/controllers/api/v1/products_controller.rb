@@ -11,9 +11,11 @@ class Api::V1::ProductsController < ApplicationController
         }
       }
     )		
-		results = JSON.parse(response)
+    results = JSON.parse(response)
+ 
+    products = results["ProductSearchResults"].first
 		
-		render json: { results: results } 
+    render json: { results: products } 
    end
 end
 
