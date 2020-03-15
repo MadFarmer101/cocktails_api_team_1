@@ -12,23 +12,22 @@ class Api::V1::ProductsController < ApplicationController
       }
     )		
     results = JSON.parse(response)
- 
-    products = results["ProductSearchResults"].first
 
-    sanitized_products = 
-    {
-     product_image: products["Thumbnail"]["ImageUrl"],
-     product_id: products["ProductId"],
-     product_number: products["ProductNumber"],
-     product_name: products["ProductNameBold"],
-     product_name_2: products["ProductNameThin"],
-     product_category: products["Category"],
-     product_price: products["Price"],
-     product_volume: products["Volume"],
-     product_country: products["Country"],
-     product_producer: products["ProducerName"]
+    sanitized_products = results["ProductSearchResults"].map { |product|
+      {
+        product_image: product["Thumbnail"]["ImageUrl"],
+        product_id: product["ProductId"],
+        product_number: product["ProductNumber"],
+        product_name: product["ProductNameBold"],
+        product_name_2: product["ProductNameThin"],
+        product_category: product["Category"],
+        product_price: product["Price"],
+        product_volume: product["Volume"],
+        product_country: product["Country"],
+        product_producer: product["ProducerName"]
+      }
     }
-	
+
     render json: { results: sanitized_products } 
    end
 end
