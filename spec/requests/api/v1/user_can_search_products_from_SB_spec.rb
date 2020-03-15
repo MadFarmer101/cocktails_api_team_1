@@ -43,11 +43,9 @@ RSpec.describe Api::V1::ProductsController, type: :request do
       expect(JSON.parse(response.body)["results"][0]["product_category"]).to eq 'Sprit'
     end
 
-
     it "should return product's ProducerName" do
       expect(JSON.parse(response.body)["results"][0]["product_producer"]).to eq 'Tevsjö Destilleri Järvsö AB'
     end
-
 
     it "should return product's ProductNumber" do
       expect(JSON.parse(response.body)["results"][0]["product_number"]).to eq '8708201'

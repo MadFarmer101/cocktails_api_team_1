@@ -1,5 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
-   def index
+  def index
 		response = RestClient.get(
       "https://www.systembolaget.se/api/productsearch/search/sok-dryck",
       {
