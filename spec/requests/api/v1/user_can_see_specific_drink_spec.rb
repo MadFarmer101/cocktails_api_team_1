@@ -35,20 +35,16 @@ describe 'GET /cocktails/:id', type: :request do
     expect(JSON.parse(response.body)["drinks"].first["image"]).to eq "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg"
   end
 
-  it 'returns drink Ingredient 1' do
+  it 'returns 1st ingredient for a drink' do
     expect(JSON.parse(response.body)["drinks"].first["ingredients"][0]["name"]).to eq "Ice"
   end
 
-  it 'returns correct number of ingredients' do
-    expect(JSON.parse(response.body)["drinks"].first["ingredients"].count).to eq 15
-  end
-
-  it 'returns drink measurement 1' do
+  it 'returns 1st measurment for a drink' do
     expect(JSON.parse(response.body)["drinks"].first["ingredients"][0]["measure"]).to eq "1 cup "
   end
 
-  it 'returns correct number of measurments' do
-    expect(JSON.parse(response.body)["drinks"].first["ingredients"].count).to eq 15
+  it 'returns correct number of ingredients' do
+    expect(JSON.parse(response.body)["drinks"].first["ingredients"].count).to eq 4
   end
 
   it 'returns number of drinks' do
