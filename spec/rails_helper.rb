@@ -8,8 +8,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'webmock/rspec'
-WebMock.enable!
-#WebMock.allow_net_connect!
+#WebMock.enable!
+WebMock.allow_net_connect!
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -32,6 +32,12 @@ RSpec.configure do |config|
 
     stub_request(:get, "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=16158").
         to_return(status: 200, body: file_fixture('cocktails_api_single_cocktail_response.json').read, headers: {})
+
+    stub_request(:get, "https://www.systembolaget.se/api/productsearch/search/sok-dryck/?SearchQuery=Vodka").
+      with(
+      headers: { 'Headers'=>'{:"Ocp-Apim-Subscription-Key"=>"98b9582575b5412ab492850d2b0ce318"}', }).
+    to_return(status: 200, body: nil, headers: {})
+      
 
   end
 end
