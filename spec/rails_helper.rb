@@ -35,7 +35,7 @@ RSpec.configure do |config|
 
     stub_request(:get, "https://www.systembolaget.se/api/productsearch/search/sok-dryck/?SearchQuery=Vodka").
       with(
-      headers: { 'Headers'=>'{:"Ocp-Apim-Subscription-Key"=>"98b9582575b5412ab492850d2b0ce318"}', }).
+      headers: { 'Headers'=>'{:"Ocp-Apim-Subscription-Key"=>"ac91b542647e461daa3620efb4b544ed"}', }).
     to_return(status: 200, body: nil, headers: {})
       
 

@@ -3,7 +3,8 @@ class Api::V1::ProductsController < ApplicationController
     binding.pry
     RestClient.get('https://www.systembolaget.se/api/productsearch/search/sok-dryck/',
         params: {'SearchQuery': 'Vodka'}, 
-        headers: {'Ocp-Apim-Subscription-Key': '98b9582575b5412ab492850d2b0ce318'})
+        headers: {'Ocp-Apim-Subscription-Key': 'ac91b542647e461daa3620efb4b544ed'})
+
 
    end
 end
