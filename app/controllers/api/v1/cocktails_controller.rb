@@ -36,22 +36,25 @@ class Api::V1::CocktailsController < ApplicationController
       }
 		)
 		
-		results = JSON.parse(response)
+		result = JSON.parse(response)
+		
+		drink = result["drinks"].first
 
 		ingredients = []
-		results["drinks"].first.select do |key, value|
+
+		drink.select do |key, value|
 			next unless key.to_s.start_with? 'strIngredient'
-			ingredient ={}
+		ingredient ={}
 			number = key.to_s.scan( /\d+$/ ).first
 			ingredient[:name] = value unless value.nil?
-			results["drinks"].first.select do |key_2, value_2|
+			drink.select do |key_2, value_2|
 				next unless key_2.to_s.start_with? "strMeasure"
 				ingredient[:measure] = value_2 if key_2.to_s.scan( /\d+$/ ).first == number && value != nil
 			end
-			ingredients.push(ingredient) unless ingredient.empty?
+		ingredients.push(ingredient) unless ingredient.empty?
 		end
 
-    sanitized_drinks = results["drinks"].map { |drink|
+    sanitized_drink = 
       {
         id: drink["idDrink"],
         name: drink["strDrink"],
@@ -62,8 +65,8 @@ class Api::V1::CocktailsController < ApplicationController
         image: drink["strDrinkThumb"],
 				ingredients: ingredients
 			}
-		}		
-		render json: {drinks: sanitized_drinks } 
+			
+		render json: { drink: sanitized_drink } 
   end
 
   private
