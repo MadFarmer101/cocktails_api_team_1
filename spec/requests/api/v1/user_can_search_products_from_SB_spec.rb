@@ -53,6 +53,9 @@ RSpec.describe Api::V1::ProductsController, type: :request do
       expect(JSON.parse(response.body)["results"]["product_number"]).to eq '8708201'
     end
 
+    it 'returns correct number of elements' do
+      expect(JSON.parse(response.body)["results"].count).to eq 10
+    end
 
     it "should return product's Image" do
       expect(JSON.parse(response.body)["results"]["product_image"]).to eq 'https://static.systembolaget.se/imagelibrary/publishedmedia/dapdo8jq0ivgyr9pkkhl/799020.jpg'
