@@ -38,18 +38,19 @@ class Api::V1::CocktailsController < ApplicationController
 		
 		results = JSON.parse(response)
 
-		ingredients = []
-		results["drinks"].first.select do |key, value|
-			next unless key.to_s.start_with? 'strIngredient'
-			ingredient ={}
-			number = key.to_s.scan( /\d+$/ ).first
-			ingredient[:name] = value unless value.nil?
-			results["drinks"].first.select do |key_2, value_2|
-				next unless key_2.to_s.start_with? "strMeasure"
-				ingredient[:measure] = value_2 if key_2.to_s.scan( /\d+$/ ).first == number && value != nil
-			end
-			ingredients.push(ingredient) unless ingredient.empty?
-		end
+    ingredients = []
+
+    results["drinks"].first.select do |key, value|
+      next unless key.to_s.start_with? 'strIngredient'
+    ingredient ={}
+      number = key.to_s.scan( /\d+$/ ).first
+      ingredient[:name] = value unless value.nil?
+      results["drinks"].first.select do |key_2, value_2|
+        next unless key_2.to_s.start_with? "strMeasure"
+        ingredient[:measure] = value_2 if key_2.to_s.scan( /\d+$/ ).first == number && value != nil
+      end
+      ingredients.push(ingredient) unless ingredient.empty?
+    end
 
     sanitized_drinks = results["drinks"].map { |drink|
       {
