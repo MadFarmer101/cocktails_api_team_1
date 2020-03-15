@@ -11,6 +11,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
       expect(response).to have_http_status 200
     end
     it "should return a correct name of first product" do
+      binding.pry
       expect(JSON.parse(response.body)["results"]["ProductSearchResults"][0]["ProductNameBold"]).to eq '1850'
     end
   end
