@@ -1,15 +1,17 @@
-describe 'GET /products', type: :request do
-  describe'successfull' do
+RSpec.describe Api::V1::ProductsController, type: :request do
+  describe "GET /api/alcohols successfully" do
     before do
-      get '/api/v1/products',
-        params: { 
-          SearchQuery: 'Vodka'
-        }
+      get "/api/v1/products",
+      params: {
+        q: "Vodka"
+      }
     end
 
-    it 'returns 200 status' do
-      expect(response.status).to eq 200
+    it "should return a 200 response" do
+      expect(response).to have_http_status 200
     end
-
+    it "should return a correct name of first product" do
+      expect(JSON.parse(response.body)["results"]["ProductSearchResults"][0]["ProductNameBold"]).to eq '1850'
+    end
   end
 end
