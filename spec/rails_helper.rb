@@ -34,6 +34,6 @@ RSpec.configure do |config|
         to_return(status: 200, body: file_fixture('cocktails_api_single_cocktail_response.json').read, headers: {})
 
     stub_request(:get, "https://www.systembolaget.se/api/productsearch/search/sok-dryck?type=Vodka").
-    to_return(status: 200, body: "", headers: {})
+    to_return(status: 200, body: file_fixture('product_list_from_sb_api_response.json').read", headers: {})
   end
 end

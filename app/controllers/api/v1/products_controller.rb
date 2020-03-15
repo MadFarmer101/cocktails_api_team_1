@@ -27,7 +27,7 @@ class Api::V1::ProductsController < ApplicationController
         product_producer: product["ProducerName"]
       }
     }
-
+    
     render json: { results: sanitized_products } 
    end
 end
