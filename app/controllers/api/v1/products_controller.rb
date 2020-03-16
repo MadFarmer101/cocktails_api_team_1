@@ -11,20 +11,21 @@ class Api::V1::ProductsController < ApplicationController
         }
       }
     )		
+
     results = JSON.parse(response)
 
     sanitized_products = results["ProductSearchResults"].map { |product|
       {
-        product_image: product["Thumbnail"]["ImageUrl"],
-        product_id: product["ProductId"],
-        product_number: product["ProductNumber"],
-        product_name: product["ProductNameBold"],
-        product_name_2: product["ProductNameThin"],
-        product_category: product["Category"],
-        product_price: product["Price"],
-        product_volume: product["Volume"],
-        product_country: product["Country"],
-        product_producer: product["ProducerName"]
+        image: product["Thumbnail"]["ImageUrl"],
+        id: product["ProductId"],
+        number: product["ProductNumber"],
+        name: product["ProductNameBold"],
+        name_2: product["ProductNameThin"],
+        category: product["Category"],
+        price: product["Price"],
+        volume: product["Volume"],
+        country: product["Country"],
+        producer: product["ProducerName"]
       }
     }
     
