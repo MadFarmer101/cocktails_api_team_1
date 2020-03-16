@@ -8,8 +8,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'webmock/rspec'
-#WebMock.enable!
-WebMock.allow_net_connect!
+WebMock.enable!
+#WebMock.allow_net_connect!
 
 ActiveRecord::Migration.maintain_test_schema!
 
