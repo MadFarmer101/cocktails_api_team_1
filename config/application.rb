@@ -17,12 +17,12 @@ module CocktailApi
   class Application < Rails::Application
     config.load_defaults 6.0
     config.api_only = true
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
-      end
-    end
+    # config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource '*', headers: :any, methods: [:get, :post, :put, :options], max_age: 600
+    #   end
+    # end
     config.generators do |generate|
       generate.helper false
       generate.assets false
