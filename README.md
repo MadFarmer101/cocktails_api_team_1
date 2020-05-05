@@ -1,4 +1,6 @@
 # The Midcourse Project | Team 1
+[![Build Status](https://semaphoreci.com/api/v1/madfarmer101/cocktails_api_team_1/branches/master/badge.svg)](https://semaphoreci.com/madfarmer101/cocktails_api_team_1)
+[![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/cocktails_api_team_1/badge.svg?branch=master)](https://coveralls.io/github/CraftAcademy/cocktails_api_team_1?branch=master)
 ### Authors
 [Hunter Vitous](https://github.com/hmvitous)
 [Kayla Woodbury](https://github.com/kaylawoodbury) 
